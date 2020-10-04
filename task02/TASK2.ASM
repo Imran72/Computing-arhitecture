@@ -1,6 +1,6 @@
-;Вариант №1
-;Разработать программу, которая вводит одномерный массив A, формирует новый массив
-;B, состоящий только из положительных элементов A
+;Р’Р°СЂРёР°РЅС‚ в„–1
+;Р Р°Р·СЂР°Р±РѕС‚Р°С‚СЊ РїСЂРѕРіСЂР°РјРјСѓ, РєРѕС‚РѕСЂР°СЏ РІРІРѕРґРёС‚ РѕРґРЅРѕРјРµСЂРЅС‹Р№ РјР°СЃСЃРёРІ A, С„РѕСЂРјРёСЂСѓРµС‚ РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
+;B, СЃРѕСЃС‚РѕСЏС‰РёР№ С‚РѕР»СЊРєРѕ РёР· РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ A
 
 
 format PE console
@@ -10,9 +10,9 @@ include 'win32a.inc'
 ;--------------------------------------------------------------------------
 section '.data' data readable writable
 
-
+        ;вот так
         strVecSize   db 'Enter vector size: ', 0
-        strErrorAlert db 'Incorrect size of vector!', 0
+        strIncorSize db 'Incorrect size of vector = %d', 10, 0
         strScanInt db '%d', 0
         strOutputTitle db 'Positive elements of vector: ', 0
         strVecElemOut  db '[%d] = %d', 10, 0
@@ -151,10 +151,10 @@ VectorInput:
         cmp eax, 0
         jg  getVector
 ; fail size
-        push strErrorAlert
+        push [vecA_size]
+        push strIncorSize
         call [printf]
-        push 0
-        call [ExitProcess]
+        jmp finish
 ; else continue...
 getVector:
         xor ecx, ecx
