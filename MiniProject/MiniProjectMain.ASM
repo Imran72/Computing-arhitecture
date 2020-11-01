@@ -1,15 +1,15 @@
 format PE console
 entry start
 
-include 'win32a.inc' ; Подключаем библиотеку
+include 'win32a.inc' ; РџРѕРґРєР»СЋС‡Р°РµРј Р±РёР±Р»РёРѕС‚РµРєСѓ
 
 section '.data' data readable writable
-        ScanInt db '%d', 0 ; Строка форматирования для чисел
-        titleNumber db "Please, enter a number in range [2;65536]: ", 0 ; строка обращения к пользователю - ввод машинного слова
-        printNumber db "General number of prime & fibbo numbers in range [1;%d] = %d",0 ; строка ответа на задачу (ответ зависит от машинного слова)
+        ScanInt db '%d', 0 ; РЎС‚СЂРѕРєР° С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ РґР»СЏ С‡РёСЃРµР»
+        titleNumber db "Please, enter a number in range [2;65536]: ", 0 ; СЃС‚СЂРѕРєР° РѕР±СЂР°С‰РµРЅРёСЏ Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ - РІРІРѕРґ РјР°С€РёРЅРЅРѕРіРѕ СЃР»РѕРІР°
+        printNumber db "General number of prime & fibbo numbers in range [1;%d] = %d",0 ; СЃС‚СЂРѕРєР° РѕС‚РІРµС‚Р° РЅР° Р·Р°РґР°С‡Сѓ (РѕС‚РІРµС‚ Р·Р°РІРёСЃРёС‚ РѕС‚ РјР°С€РёРЅРЅРѕРіРѕ СЃР»РѕРІР°)
 
-        inputInfo db "Your number is %d. (y/n)",10, 0  ; строка уточнения введенного числа
-        numberFibboPrime dd 0 ; переменная - колво простых чисел среди чисел Фибоначии в диапозоне [1; машинное слово]
+        inputInfo db "Your number is %d. (y/n)",10, 0  ; СЃС‚СЂРѕРєР° СѓС‚РѕС‡РЅРµРЅРёСЏ РІРІРµРґРµРЅРЅРѕРіРѕ С‡РёСЃР»Р°
+        numberFibboPrime dd 0 ; РїРµСЂРµРјРµРЅРЅР°СЏ - РєРѕР»РІРѕ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» СЃСЂРµРґРё С‡РёСЃРµР» Р¤РёР±РѕРЅР°С‡РёРё РІ РґРёР°РїРѕР·РѕРЅРµ [1; РјР°С€РёРЅРЅРѕРµ СЃР»РѕРІРѕ]
         startNumber dd 2
 
         lastFibbo dd 1
